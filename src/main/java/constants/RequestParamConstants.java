@@ -1,0 +1,86 @@
+package constants;
+
+public final class RequestParamConstants {
+
+	private RequestParamConstants() {
+	}
+
+	public static final String CHECKBOX_ON = "on";
+
+	public static final String ID = "id";
+	public static final String CODE = "code";
+	public static final String NAME = "name";
+	public static final String DESCRIPTION = "description";
+	public static final String MODULE = "module";
+	public static final String IS_SYSTEM = "isSystem";
+	public static final String IS_ACTIVE = "isActive";
+	public static final String ERROR = "error";
+	public static final String STEP = "step";
+
+	public static final class ErrorValue {
+		private ErrorValue() {
+		}
+
+		public static final String OAUTH_STATE = "oauth_state";
+		public static final String OAUTH_PROVIDER = "oauth_provider";
+		public static final String OAUTH_FAILED = "oauth_failed";
+	}
+
+	public static final class Auth {
+		private Auth() {
+		}
+
+		public static final String USERNAME = "username";
+		public static final String PASSWORD = "password";
+	}
+
+	public static final class User {
+		private User() {
+		}
+
+		public static final String USERNAME = "username";
+		public static final String PASSWORD = "password";
+		public static final String FULLNAME = "fullname";
+		public static final String EMAIL = "email";
+		public static final String CURRENT_EMAIL = "currentEmail";
+		public static final String NEW_EMAIL = "newEmail";
+		public static final String CURRENT_EMAIL_CODE = "currentEmailCode";
+		public static final String NEW_EMAIL_CODE = "newEmailCode";
+		public static final String PHONE_NUMBER = "phoneNumber";
+		public static final String GENDER = "gender";
+		public static final String ROLE = "role";
+		public static final String PREFERRED_LANGUAGE_ID = "preferredLanguageId";
+		public static final String PREFERRED_LANGUAGE = "preferredLanguage";
+		public static final String AVATAR_URL = "avatarUrl";
+		public static final String USER_IDS = "userIds";
+		public static final String CURRENT_PASSWORD = "currentPassword";
+		public static final String NEW_PASSWORD = "newPassword";
+		public static final String CONFIRM_PASSWORD = "newPasswordAgain";
+	}
+
+	public static final class Role {
+		private Role() {
+		}
+
+		public static final String ROLE_ID = "roleId";
+		public static final String PERMISSION_IDS = "permissionIds";
+		public static final String ASSIGNED_ROLE_IDS = "assignedRoleIds";
+		public static final String ROLE_IDS = "roleIds";
+	}
+
+	public static final class Permission {
+		private Permission() {
+		}
+
+		public static final String PERMISSION_IDS = "permissionIds";
+	}
+
+	public static final class OAuth {
+		private OAuth() {
+		}
+
+		public static final String PROVIDER = "provider";
+		public static final String CODE = "code";
+		public static final String STATE = "state";
+	}
+}

@@ -1,0 +1,140 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="jakarta.tags.core" prefix="c"%>
+<%@ taglib uri="jakarta.tags.functions" prefix="fn"%>
+<%@ include file="_paramKeys.jsp" %>
+
+<c:set var="servletPath" scope="page"
+	value="${requestScope['jakarta.servlet.forward.servlet_path']}" />
+
+<header class="section-header border-bottom bg-white py-3">
+	<div class="container">
+		<div
+			class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+			<h3 class="mb-0">
+				<a class="text-dark text-decoration-none fw-bold"
+					href="${pageContext.request.contextPath}${RT_ADMIN_HOME}"> <i
+					class="bi bi-book-half text-primary me-2"></i>Shop Bán Sách <span
+					class="badge bg-secondary fs-6 align-middle">Admin</span>
+				</a>
+			</h3>
+
+			<div class="d-flex align-items-center">
+				<c:choose>
+					<c:when test="${not empty sessionScope.currentUser}">
+						<span class="text-muted">Xin chào, <strong
+							class="text-dark">${sessionScope.currentUser.fullname}</strong>!
+						</span>
+						<a class="btn btn-outline-danger btn-sm ms-3"
+							href="${pageContext.request.contextPath}${RT_ADMIN_SIGNOUT}"> <i
+							class="bi bi-box-arrow-right"></i> Đăng xuất
+						</a>
+					</c:when>
+					<c:otherwise>
+						<a class="btn btn-primary btn-sm"
+							href="${pageContext.request.contextPath}${RT_ADMIN_SIGNIN}"> <i
+							class="bi bi-box-arrow-in-right"></i> Đăng nhập
+						</a>
+					</c:otherwise>
+				</c:choose>
+			</div>
+		</div>
+	</div>
+</header>
+
+<nav
+	class="navbar navbar-expand-xl navbar-light bg-light border-bottom sticky-top shadow-sm py-1">
+	<div class="container">
+		<button class="navbar-toggler ms-auto" type="button"
+			data-bs-toggle="collapse" data-bs-target="#adminNavbar"
+			aria-controls="adminNavbar" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="adminNavbar">
+			<ul class="navbar-nav w-100 nav-fill gap-1 my-2 my-xl-0">
+
+				<c:if test="${userPermissionContext.canViewUser}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, RT_ADMIN_USER) ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}${RT_ADMIN_USER}"> <i
+							class="bi bi-people me-1"></i> Người dùng
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewRole}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, RT_ADMIN_ROLE) ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}${RT_ADMIN_ROLE}"> <i
+							class="bi bi-shield-lock me-1"></i> Vai trò
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewPermission}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, RT_ADMIN_PERMISSION) ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}${RT_ADMIN_PERMISSION}"> <i
+							class="bi bi-key me-1"></i> Quyền hạn
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewCategory}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/categoryManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/categoryManager/view">
+							<i class="bi bi-tags me-1"></i> Thể loại
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewProduct}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/productManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/productManager/view">
+							<i class="bi bi-book me-1"></i> Sản phẩm
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewReview}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/reviewManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/reviewManager/view">
+							<i class="bi bi-star me-1"></i> Đánh giá
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewOrder}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/orderManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/orderManager/view">
+							<i class="bi bi-inboxes me-1"></i> Đơn hàng
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewVoucher}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/voucherManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/voucherManager/view">
+							<i class="bi bi-ticket me-1"></i> Voucher
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewShipment}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/shipmentManager') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/shipmentManager">
+							<i class="bi bi-truck me-1"></i> Vận đơn
+					</a></li>
+				</c:if>
+
+				<c:if test="${userPermissionContext.canViewShippingConfig}">
+					<li class="nav-item"><a
+						class="nav-link rounded px-3 py-2 ${fn:startsWith(servletPath, '/admin/shippingMethod') ? 'active bg-primary text-white' : 'text-dark'}"
+						href="${pageContext.request.contextPath}/admin/shippingMethod">
+							<i class="bi bi-gear me-1"></i> Cấu hình ship
+					</a></li>
+				</c:if>
+
+			</ul>
+		</div>
+	</div>
+</nav>

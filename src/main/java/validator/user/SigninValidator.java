@@ -1,0 +1,22 @@
+package validator.user;
+
+import constants.RequestParamConstants;
+import dto.user.SigninRequest;
+import validator.core.BaseValidator;
+import validator.core.ValidationResult;
+
+public class SigninValidator extends BaseValidator<SigninRequest> {
+
+	@Override
+	protected void validateFormat(SigninRequest dto, ValidationResult result) {
+		String username = dto.getUsername();
+		if (username == null || username.trim().isEmpty()) {
+			result.addError(RequestParamConstants.User.USERNAME, "Tên đăng nhập không được để trống");
+		}
+
+		String password = dto.getPassword();
+		if (password == null || password.trim().isEmpty()) {
+			result.addError(RequestParamConstants.User.PASSWORD, "Mật khẩu không được để trống");
+		}
+	}
+}
